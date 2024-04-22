@@ -1,0 +1,54 @@
+/* Navbar */
+.navbar {
+  background-color: #343a40; /* Dark background color */
+  padding: 10px 20px; /* Padding around the navbar */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.navbar-brand {
+  font-size: 1.8rem; /* Increase font size */
+  font-weight: bold; /* Add bold font weight */
+}
+
+.navbar-nav {
+  margin-right: auto; /* Push links to the right */
+}
+
+.nav-link {
+  font-size: 1.2rem; /* Adjust font size */
+  color: #fff; /* Text color */
+  margin-right: 15px; /* Adjust spacing between links */
+  position: relative; /* Position for pseudo elements */
+}
+
+.nav-link::before {
+  content: ''; /* Empty content for pseudo element */
+  position: absolute; /* Position the element */
+  bottom: -2px; /* Position from the bottom */
+  left: 0; /* Align to the left */
+  width: 100%; /* Full width */
+  height: 2px; /* Height of the line */
+  background-color: #007bff; /* Color of the line */
+  transform: scaleX(0); /* Initially hide the line */
+  transition: transform 0.3s; /* Add transition effect */
+}
+
+.nav-link:hover::before {
+  transform: scaleX(1); /* Show the line on hover */
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+  border: none; /* Remove border from the toggler button */
+}
+
+.navbar-toggler-icon {
+  background-color: #fcffff; 
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar-nav {
+    margin-top: 10px; 
+  }
+}

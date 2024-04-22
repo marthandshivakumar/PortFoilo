@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Main from './Main';
+import NavigationBar from './Nav';
+import Projects from './Projects.js';
+import Skill from './Skills.js';
+import Contact from './Contact.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
   return (
+    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Router>
+      <div>
+      <NavigationBar />
+        <Routes> {/* Change here: Use Routes instead of Switch */}
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/" element={<Main />} />
+          <Route path="/Skill" element={<Skill />} />
+          <Route path="/Contact" element={<Contact />} />
+        </Routes>
+      </div>
+    </Router>
     </div>
   );
 }
