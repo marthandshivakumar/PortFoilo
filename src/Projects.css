@@ -1,50 +1,60 @@
-/* Projects.css */
-
 #projects {
-  background-color: #a3cdf8;
+  background: linear-gradient(135deg, #a0d6d8 30%, #00796b 70%); /* Teal gradients */
   padding: 50px 0;
 }
-
-#project {
+#projects {
   margin-bottom: 30px;
+  height: 100vh;
 }
 
 .card {
-  perspective: 1000px;
+  perspective: 1500px;
+  cursor: pointer;
+  height: 300px;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .card-inner {
   width: 100%;
   height: 100%;
-  transition: transform 0.8s;
+  transition: transform 0.8s ease;
   transform-style: preserve-3d;
+  position: relative;
 }
 
 .card:hover .card-inner {
   transform: rotateY(180deg);
 }
 
-.card-front,
-.card-back {
+.card-front, .card-back {
   width: 100%;
   height: 100%;
   position: absolute;
   backface-visibility: hidden;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .card-front {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background-color: #9ef4e6;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 .card-back {
+  background-color: #e0f7fa;
   transform: rotateY(180deg);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 .card-body {
@@ -52,22 +62,40 @@
 }
 
 .card-title {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: bold;
+  color: #212121;
+  text-transform: uppercase;
   margin-bottom: 10px;
-  color: #333;
 }
 
 .card-text {
+  font-size: 1.1rem;
+  color: #424242;
+}
+
+.card-link {
   font-size: 1rem;
-  color: #666;
+  color: #ff5722;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: underline;
 }
 
 .card-img-top {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 10px 10px 0 0;
+  border-radius: 15px 15px 0 0;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.card-front:hover .card-img-top {
+  transform: scale(1.1);
+  filter: brightness(90%);
 }
 
 @media (max-width: 768px) {

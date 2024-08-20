@@ -1,59 +1,79 @@
-/* Skill.css */
+/* Background and Container */
+.skills-background {
+  background: linear-gradient(135deg, #a0d6d8 30%, #00796b 70%); /* Teal gradients */
+  padding: 50px 0;
+  min-height: 200vh;
+}
 
-.container-fuild {
-    background: linear-gradient(45deg, #90a3fa, #c6ccd7,rgb(187, 252, 245));
-    color: white;
-    padding: 50px 0;
-  }
-  
-  .skills-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 5fr));
-    gap: 20px;
-    padding: 20px;
-  }
-  
-  .skill-card {
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.1s, box-shadow 0.3s;
-  }
-  
-  .skill-card:hover {
-    transform: translatex(-10px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .skill-image {
-    width: 80%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .skill-content {
-    padding: 20px;
-  }
-  
-  .skill-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .skill-description {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 20px;
-  }
-  
-  @media (max-width: 768px) {
-    .skills-container {
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-  }
-  
+
+h1 {
+  color: #f1c40f;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center; 
+  margin-bottom: 40px; 
+}
+
+/* Skill Card */
+.skill-card {
+  background-color: #fff; 
+  border-radius: 12px; 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; 
+  margin: 20px; 
+  padding: 20px; 
+}
+
+
+.skill-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.25); 
+}
+
+/* Skill Image */
+.skill-image {
+  height: 100px;
+  object-fit: contain;
+  background: #f8f8f8; 
+  padding: 10px; 
+  border-radius: 8px; 
+}
+
+/* Skill Title */
+.skill-title {
+  font-size: 1.6rem;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Highlighted Text */
+.highlighted-text {
+  display: inline-block;
+  color: #8e44ad; 
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease; 
+}
+
+.highlighted-text:hover {
+  color: #f39c12; /* Gold color on hover */
+  text-decoration: none;
+}
+
+/* Progress Bar */
+.progress-bar {
+  background-color: #8e44ad; 
+  border-radius: 8px; 
+  height: 20px; 
+  position: relative;
+}
+
+.progress-bar .progress-bar-label {
+  color: #fff; 
+  font-weight: bold; 
+  text-align: center;
+  line-height: 20px;
+}

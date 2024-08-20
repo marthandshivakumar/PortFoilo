@@ -1,61 +1,91 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './contact.css';
+import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
+import './contact.css'; // Ensure this file contains the updated CSS
 
-function Contact() {
+const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    mobile: '',
+    message: ''
+  });
+
+  const [formErrors, setFormErrors] = useState({});
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const errors = {};
+    if (!formData.name) errors.name = 'Name is required';
+    if (!formData.email) errors.email = 'Email is required';
+    if (!formData.mobile) errors.mobile = 'Mobile number is required';
+    if (!formData.message) errors.message = 'Message is required';
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
+    emailjs.sendForm('service_sqtezms', 'template_pk1yfek', e.target, 'o1C2VGNdHIqdzMjvc')
+      .then((result) => {
+        alert('Message sent successfully!');
+        setFormData({ name: '', email: '', mobile: '', message: '' });
+        setFormErrors({});
+      }, (error) => {
+        alert('Failed to send message. Please try again.');
+      });
+  };
+
   return (
-    <div className="container-fluid">
-      <div className="row justify-content-center ">
-        <div className="col-md-8 mt-4">
-          <div className="about-section text-center">
-            <h1>About</h1>
-            <p>
-              Hello! My name is <strong>Shiva Kumar Marthand</strong>, and I'm currently looking for a role in <strong>Software Engineering</strong>.
-            </p>
-            <p>Completed an internship at Vcube Software Solutions.</p>
-          </div>
-        </div>
-      </div>
-      <div className="row justify-content-center mt-4">
-        <div className="col-md-8">
-          <div className="card-group">
-            <div className="card">
-              <div className="card-body">
-                <h2 className="card-title">Education</h2>
-                <p className="card-text">
-                  I have completed my B.Tech with a grade of 61% from Narasimha Reddy Engineering College.
-                </p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="card-body">
-                <h2 className="card-title">Address</h2>
-                <p className="card-text">
-                  502300 I snapur Sanagreddy,<br />Hyderabad, India
-                </p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="card-body">
-                <h2 className="card-title">Phone</h2>
-                <p className="card-text">
-                  +91 9505608974
-                </p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="card-body">
-                <h2 className="card-title">Email</h2>
-                <p className="card-text">
-                  shivayadav12088@gmail.com
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="contact-form-container">
+      <h2>Contact Me</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+        {formErrors.name && <p style={{ color: 'red' }}>{formErrors.name}</p>}
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        {formErrors.email && <p style={{ color: 'red' }}>{formErrors.email}</p>}
+        <input
+          type="text"
+          name="mobile"
+          placeholder="Your Mobile Number"
+          value={formData.mobile}
+          onChange={handleChange}
+          required
+        />
+        {formErrors.mobile && <p style={{ color: 'red' }}>{formErrors.mobile}</p>}
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          value={formData.message}
+          onChange={handleChange}
+          required
+        />
+        {formErrors.message && <p style={{ color: 'red' }}>{formErrors.message}</p>}
+        <button type="submit">Send Message</button>
+      </form>
     </div>
   );
-}
+};
 
-export default Contact;
+export default ContactForm;

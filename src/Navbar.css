@@ -1,54 +1,86 @@
-/* Navbar */
+/* Navbar.css */
+
 .navbar {
-  background-color: #343a40; /* Dark background color */
-  padding: 10px 20px; /* Padding around the navbar */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  background-color: #008080; /* Teal */
+  padding: 15px 25px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  position: fixed; /* Fixed position */
+  top: 0; /* Top of the viewport */
+  width: 100%; /* Full width */
+  z-index: 1000; /* Ensure it stays above other content */
 }
 
 .navbar-brand {
-  font-size: 1.8rem; /* Increase font size */
-  font-weight: bold; /* Add bold font weight */
+  font-size: 2rem; 
+  font-weight: bold; 
+  color: #ffffff; 
 }
 
 .navbar-nav {
-  margin-right: auto; /* Push links to the right */
+  margin-left: auto;
+}
+.navbar-nav .nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .nav-link .icon {
+  margin-right: 8px; /* Space between icon and text */
+}
+
+.navbar-nav .nav-link {
+  font-size: 1rem; /* Adjust size as needed */
 }
 
 .nav-link {
-  font-size: 1.2rem; /* Adjust font size */
-  color: #fff; /* Text color */
-  margin-right: 15px; /* Adjust spacing between links */
-  position: relative; /* Position for pseudo elements */
+  font-size: 1.2rem; 
+  color: #ffffff; 
+  margin-right: 25px; 
+  position: relative; 
+  padding-bottom: 7px; 
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.nav-link:hover {
+  color: #f1f10f;
+  background-color: rgba(255, 255, 255, 0.1); 
 }
 
 .nav-link::before {
-  content: ''; /* Empty content for pseudo element */
-  position: absolute; /* Position the element */
-  bottom: -2px; /* Position from the bottom */
-  left: 0; /* Align to the left */
-  width: 100%; /* Full width */
-  height: 2px; /* Height of the line */
-  background-color: #007bff; /* Color of the line */
-  transform: scaleX(0); /* Initially hide the line */
-  transition: transform 0.3s; /* Add transition effect */
+  content: ''; 
+  position: absolute; 
+  bottom: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 3px; 
+  background-color: #f1e20f; 
+  transform: scaleX(0); 
+  transform-origin: bottom right; 
+  transition: transform 0.3s ease, background-color 0.3s ease; 
 }
 
 .nav-link:hover::before {
-  transform: scaleX(1); /* Show the line on hover */
+  transform: scaleX(1); 
+  transform-origin: bottom left;
 }
 
-/* Navbar Toggler */
 .navbar-toggler {
-  border: none; /* Remove border from the toggler button */
+  border: none; 
 }
 
 .navbar-toggler-icon {
-  background-color: #fcffff; 
+  background-color: #f1c80f; 
+  border-radius: 5px;
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
   .navbar-nav {
-    margin-top: 10px; 
+    margin-top: 15px;
+    text-align: center; 
+  }
+  .nav-link {
+    margin-right: 0;
+    display: block; 
+    padding: 12px 0;
   }
 }

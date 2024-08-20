@@ -1,82 +1,90 @@
-  // Skill.js
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Row, Col, ProgressBar, Tooltip, OverlayTrigger, Card } from 'react-bootstrap';
+import './Skill.css';
 
-  import React from 'react';
-  import 'bootstrap/dist/css/bootstrap.min.css';
-  import './Projects.css'
-  import './Skill.css';
-  const skills = [
-    {
-      title: 'Python',
-      description: 'Proficient in Python programming language.',
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png',
-    },
-    {
-      title: 'MySQL',
-      description: 'Experience in working with MySQL databases.',
-      imageUrl: 'https://1000logos.net/wp-content/uploads/2020/08/MySQL-Logo.png',
-    },
-    {
-      title: 'Django',
-      description: 'Skilled in Django web framework.',
-      imageUrl: 'https://www.opengis.ch/wp-content/uploads/2020/04/django-python-logo.png',
-    },
-    {
-      title: 'HTML',
-      description: 'Strong knowledge of HTML for building web pages.',
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1024px-HTML5_logo_and_wordmark.svg.png',
-    },
-    {
-      title: 'React.js',
-      description: 'Proficient in building user interfaces with React.js.',
-      imageUrl: 'https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png',
-    },
-    {
-      title: 'CSS',
-      description: 'Experience in styling web pages with CSS and implement.',
-      imageUrl: 'https://1000marcas.net/wp-content/uploads/2021/02/CSS-Logo.png',
-    },
-    {
-      title: 'Bootstrap',
-      description: 'Familiarity with the Bootstrap framework for responsive design.',
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1280px-Bootstrap_logo.svg.png',
-    },
-    {
-      title: 'JavaScript',
-      description: 'Strong skills in JavaScript for client-side scripting.',
-      imageUrl: 'https://www.freepnglogos.com/uploads/javascript-png/png-javascript-badge-picture-8.png',
-    },
-    {
-      title: 'REST API',
-      description: 'Experience in designing and consuming RESTful APIs.',
-      imageUrl: 'https://tomaztsql.files.wordpress.com/2021/08/restapi2.png',
-    },
-    // Add more skills as needed
-  ];
+const skills = [
+  {
+    title: 'Python',
+    rating: 90,
+    description: 'Proficient in Python with extensive experience in web development, data analysis, and scripting.',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg',
+  },
+  {
+    title: 'MySQL',
+    rating: 80,
+    description: 'Experience in managing MySQL databases, including optimization and complex queries.',
+    imageUrl: 'https://1000logos.net/wp-content/uploads/2020/08/MySQL-Logo.png',
+  },
+  {
+    title: 'Django',
+    rating: 85,
+    description: 'Skilled in Django, capable of building robust and scalable web applications.',
+    imageUrl: 'https://www.opengis.ch/wp-content/uploads/2020/04/django-python-logo.png',
+  },
+  {
+    title: 'HTML',
+    rating: 95,
+    description: 'Strong knowledge of HTML for creating well-structured and accessible web pages.',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg',
+  },
+  {
+    title: 'React.js',
+    rating: 75,
+    description: 'Proficient in React.js for building dynamic and responsive user interfaces.',
+    imageUrl: 'https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png',
+  },
+  {
+    title: 'CSS',
+    rating: 85,
+    description: 'Experience in using CSS for creating visually appealing and responsive designs.',
+    imageUrl: 'https://1000marcas.net/wp-content/uploads/2021/02/CSS-Logo.png',
+  },
+  {
+    title: 'Bootstrap',
+    rating: 80,
+    description: 'Familiar with Bootstrap for fast and responsive web design.',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg',
+  },
+  {
+    title: 'JavaScript',
+    rating: 90,
+    description: 'Strong skills in JavaScript, capable of creating dynamic and interactive web experiences.',
+    imageUrl: 'https://www.freepnglogos.com/uploads/javascript-png/png-javascript-badge-picture-8.png',
+  },
+  {
+    title: 'REST API',
+    rating: 70,
+    description: 'Experience in designing and consuming RESTful APIs for seamless communication between frontend and backend.',
+    imageUrl: 'https://tomaztsql.files.wordpress.com/2021/08/restapi2.png',
+  },
+];
 
-  const Skill = () => {
-    return (
-      <div className="container-fuild ">
-        <h1 className="mb-4">Skills</h1>
-        <div className="skills-container">
-          {skills.map((skill, index) => (
-            <div key={index} className="skill-card">
-              <img
-                src={skill.imageUrl}
-                alt={skill.title}
-                className="skill-image"
-              />
-              <div className="skill-content">
-                <h3 className="skill-title">{skill.title}</h3>
-                <p className="skill-description">{skill.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  };
+const Skill = () => {
+  return (
+    <Container fluid className="skills-background ">
+      <h1 className="text-center mb-4 text-light">Skills</h1>
+      <Row>
+        {skills.map((skill, index) => (
+          <Col key={index} md={4} className="mb-2">
+            <Card className="skill-card">
+              <Card.Img variant="top" src={skill.imageUrl} className="skill-image" />
+              <Card.Body>
+                <Card.Title className="skill-title">{skill.title}</Card.Title>
+                <ProgressBar now={skill.rating} label={`${skill.rating}%`} className="mb-3" />
+                <OverlayTrigger
+                  placement="bottom"
+                  overlay={<Tooltip id={`tooltip-${index}`}>{skill.description}</Tooltip>}
+                >
+                  <span className="highlighted-text">Hover to learn more</span>
+                </OverlayTrigger>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Container>
+  );
+};
 
-
-
-  
-  export default Skill;
+export default Skill;
